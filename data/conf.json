@@ -1,0 +1,66 @@
+{
+    "project-name": "TIMO",
+    "version": "v0.0.1",
+    "Tests": {
+        "CSW": {
+            "uses": "flake8",
+            "with": "default",
+            "run": [
+                "flake8 angora/cmds/impl/ --output-file=flake8.txt"
+            ],
+            "report": {
+                "type": "txt",
+                "path": "flake8.txt"
+            }
+        },
+        "Unittest": {
+            "uses": "unittest",
+            "with": "default",
+            "run": [],
+            "report": {
+                "type": "html",
+                "path": "test/result"
+            }
+        },
+        "Coverage": {
+            "uses": "coverage",
+            "with": "default",
+            "run": [
+                "coverage --include=angora/cmds/impl/* test/run_tests.py",
+                "coverage xml"
+            ],
+            "report": {
+                "type": "xml",
+                "path": "coverage.xml"
+            }
+        }
+    },
+    "Score": {
+        "custom": "True",
+        "set": {
+            "CSW": "30%",
+            "Unittest": "50%",
+            "Coverage": "20%",
+            "APItest": "0%",
+            "E2Etest": "0%"
+        }
+    },
+    "Post": {
+        "type": "email",
+        "set": [
+            {
+                "name": "developer",
+                "recipients": [
+                    "foo@bar.com"
+                ]
+            },
+            {
+                "name": "director",
+                "recipients": [
+                    "foo@bar.com",
+                    "abc@abc.com"
+                ]
+            }
+        ]
+    }
+}

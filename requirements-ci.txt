@@ -1,0 +1,4 @@
+coverage
+unittest-xml-reporting
+python-jenkins
+xmltodict
